@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "Nuevo perfil",
+    "Projects": [
+      {
+        "Path": "TiendaServicio.Api.CarritoCompra\\TiendaServicio.Api.CarritoCompra.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      },
+      {
+        "Path": "TiendaServicios.Api.Autor\\TiendaServicios.Api.Autor.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      },
+      {
+        "Path": "TiendaServicios.Api.Libro\\TiendaServicios.Api.Libro.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      }
+    ]
+  }
+]
