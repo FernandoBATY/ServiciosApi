@@ -21,6 +21,18 @@ builder.Services.AddControllers();
 // Configuración de Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// Configuración de CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // tu frontend
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+
 
 var app = builder.Build();
 
@@ -32,6 +44,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.Use(async (context, next) =>
+{
+    Console.WriteLine("Solicitud recibida para: " + context.Request.Path);
+    await next();
+    Console.WriteLine("Respuesta con estado: " + context.Response.StatusCode);
+});
+
+// Aplicar la política CORS
+app.UseCors("PermitirFrontend");
 
 app.UseAuthorization();
 

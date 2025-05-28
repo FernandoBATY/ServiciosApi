@@ -2,32 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Tienda Servicios - Frontend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carrusel de Libros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
 </head>
+
 <body>
-    <h1>Lista de Libros</h1>
-    <ul id="lista-libros"></ul>
-    <script>
-        const apiBase = 'https://localhost:7119';
-        async function cargarLibros() {
-            try {
-                const response = await fetch(apiBase);
-                if (!response.ok) throw new Error('Error en la llamada a la API');
-                const libros = await response.json();
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Libros Disponibles</h2>
+        <div id="carruselLibros" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carouselInner">
+                <div class="text-center">
+                    <p>Cargando libros...</p>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carruselLibros" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carruselLibros" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
 
-                const ul = document.getElementById('lista-libros');
-                ul.innerHTML = '';
-                libros.forEach(libro => {
-                    const li = document.createElement('li');
-                    li.textContent = `${libro.titulo} - Autor: ${libro.autor}`;
-                    ul.appendChild(li);
-                });
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        cargarLibros();
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
 </body>
+<style>
+    .slide-item {
+        height: 300px;
+        background-color: #808080;
+    }
+</style>
 </html>

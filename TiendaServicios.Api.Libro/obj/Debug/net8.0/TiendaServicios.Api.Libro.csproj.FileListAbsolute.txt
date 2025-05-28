@@ -83,3 +83,4 @@ C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Libro\
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Libro\obj\Debug\net8.0\TiendaServicios.Api.Libro.pdb
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Libro\obj\Debug\net8.0\TiendaServicios.Api.Libro.genruntimeconfig.cache
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Libro\obj\Debug\net8.0\ref\TiendaServicios.Api.Libro.dll
+C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Libro\obj\Debug\net8.0\TiendaServicios.Api.Libro.sourcelink.json
