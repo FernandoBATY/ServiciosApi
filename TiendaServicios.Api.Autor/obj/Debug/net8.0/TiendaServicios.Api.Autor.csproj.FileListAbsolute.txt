@@ -44,7 +44,6 @@ C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.TiendaServicios.Api.Autor.props
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.TiendaServicios.Api.Autor.props
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\TiendaSe.67D06D29.Up2Date
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\TiendaServicios.Api.Autor.dll
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\refint\TiendaServicios.Api.Autor.dll

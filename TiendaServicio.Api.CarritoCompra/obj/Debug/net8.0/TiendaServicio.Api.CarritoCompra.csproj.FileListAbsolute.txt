@@ -113,7 +113,6 @@ C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.Carrito
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.TiendaServicio.Api.CarritoCompra.props
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.TiendaServicio.Api.CarritoCompra.props
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\TiendaSe.DE5168D4.Up2Date
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\TiendaServicio.Api.CarritoCompra.dll
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\refint\TiendaServicio.Api.CarritoCompra.dll

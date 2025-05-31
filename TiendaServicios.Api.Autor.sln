@@ -13,6 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiendaServicio.Api.CarritoC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend-web", "frontend-web", "{C34F5BF7-2321-4223-8CE0-E22DEFF5750F}"
 	ProjectSection(SolutionItems) = preProject
+		carrito.html = carrito.html
 		index.html = index.html
 		main.js = main.js
 		style.css = style.css
