@@ -48,6 +48,18 @@ namespace TiendaServicios.Api.Autor
 
             // Configuración de Swagger (opcional, si se usa)
             services.AddSwaggerGen();
+
+            // Agrega CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000")
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
+            });
         }
 
         // Método para configurar la tubería HTTP
@@ -66,6 +78,9 @@ namespace TiendaServicios.Api.Autor
             }
 
             app.UseRouting();
+
+            // Habilita CORS antes de Authorization
+            app.UseCors("AllowFrontend");
 
             app.UseAuthorization();
 

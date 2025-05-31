@@ -50,3 +50,4 @@ C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\TiendaServicios.Api.Autor.pdb
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\TiendaServicios.Api.Autor.genruntimeconfig.cache
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\ref\TiendaServicios.Api.Autor.dll
+C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

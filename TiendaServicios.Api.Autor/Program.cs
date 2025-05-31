@@ -34,6 +34,18 @@ builder.Services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Agrega CORS para permitir el frontend
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -47,6 +59,10 @@ if (app.Environment.IsDevelopment())
 
 // 🌐 Middleware
 app.UseHttpsRedirection();
+
+// Habilita CORS antes de Authorization
+app.UseCors("AllowFrontend");
+
 app.UseAuthorization();
 app.MapControllers();
 

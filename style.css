@@ -7,7 +7,7 @@ body {
 
 .container {
     max-width: 900px;
-    margin: 80px auto 0 auto; /* Aumenta el margen superior para centrar mejor */
+    margin: 80px auto 0 auto; 
     padding: 0 16px;
     display: flex;
     flex-direction: column;
@@ -542,6 +542,16 @@ footer {
     background: #2563eb;
 }
 
+/* Pausar animación del carrusel y cartas cuando el mouse está sobre cualquier carta */
+.card-3d:hover,
+.card-3d:has(.book-card:hover) {
+  animation-play-state: paused !important;
+}
+.card-3d .book-card:hover,
+.card-3d:hover .book-card {
+  animation-play-state: paused !important;
+}
+
 /* Más separación entre cartas en el círculo 3D */
 .card-3d .book-card:nth-child(1)  { transform: translate(-50%, -50%) rotateY(0deg) translateZ(360px);    animation-delay: -0s; }
 .card-3d .book-card:nth-child(2)  { transform: translate(-50%, -50%) rotateY(36deg) translateZ(360px);   animation-delay: -2s; }
@@ -570,4 +580,38 @@ footer {
     position: absolute;
     right: 2rem;
     top: 1.2rem;
+}
+
+/* Modal de autor */
+.autor-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.45);
+    justify-content: center;
+    align-items: center;
+}
+.autor-modal-content {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 2rem 2.5rem;
+    min-width: 260px;
+    max-width: 90vw;
+    box-shadow: 0 8px 32px rgba(79,140,255,0.18);
+    position: relative;
+    text-align: center;
+}
+.autor-modal-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 1.2rem;
+    font-size: 2rem;
+    color: #4f8cff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+.autor-modal-close:hover {
+    color: #ff5722;
 }
