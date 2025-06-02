@@ -552,23 +552,27 @@ footer {
   animation-play-state: paused !important;
 }
 
-/* Pausar animación del carrusel cuando el modal de autor está abierto */
-body.modal-open .card-3d,
-body.modal-open .card-3d .book-card {
+/* Pausar animación del carrusel y cartas cuando el mouse está sobre cualquier carta */Add commentMore actions
+.card-3d:hover,
+.card-3d:has(.book-card:hover) {
+  animation-play-state: paused !important;
+}
+.card-3d .book-card:hover,
+.card-3d:hover .book-card {
   animation-play-state: paused !important;
 }
 
 /* Más separación entre cartas en el círculo 3D */
-.card-3d .book-card:nth-child(1)  { transform: translate(-50%, -50%) rotateY(0deg) translateZ(250px);    animation-delay: -0s; }
-.card-3d .book-card:nth-child(2)  { transform: translate(-50%, -50%) rotateY(36deg) translateZ(250px);   animation-delay: -2s; }
-.card-3d .book-card:nth-child(3)  { transform: translate(-50%, -50%) rotateY(72deg) translateZ(250px);   animation-delay: -4s; }
-.card-3d .book-card:nth-child(4)  { transform: translate(-50%, -50%) rotateY(108deg) translateZ(250px);  animation-delay: -6s; }
-.card-3d .book-card:nth-child(5)  { transform: translate(-50%, -50%) rotateY(144deg) translateZ(250px);  animation-delay: -8s; }
-.card-3d .book-card:nth-child(6)  { transform: translate(-50%, -50%) rotateY(180deg) translateZ(250px);  animation-delay: -10s; }
-.card-3d .book-card:nth-child(7)  { transform: translate(-50%, -50%) rotateY(216deg) translateZ(250px);  animation-delay: -12s; }
-.card-3d .book-card:nth-child(8)  { transform: translate(-50%, -50%) rotateY(252deg) translateZ(250px);  animation-delay: -14s; }
-.card-3d .book-card:nth-child(9)  { transform: translate(-50%, -50%) rotateY(288deg) translateZ(250px);  animation-delay: -16s; }
-.card-3d .book-card:nth-child(10) { transform: translate(-50%, -50%) rotateY(324deg) translateZ(250px);  animation-delay: -18s; }
+.card-3d .book-card:nth-child(1)  { transform: translate(-50%, -50%) rotateY(0deg) translateZ(360px);    animation-delay: -0s; }
+.card-3d .book-card:nth-child(2)  { transform: translate(-50%, -50%) rotateY(36deg) translateZ(360px);   animation-delay: -2s; }
+.card-3d .book-card:nth-child(3)  { transform: translate(-50%, -50%) rotateY(72deg) translateZ(360px);   animation-delay: -4s; }
+.card-3d .book-card:nth-child(4)  { transform: translate(-50%, -50%) rotateY(108deg) translateZ(360px);  animation-delay: -6s; }
+.card-3d .book-card:nth-child(5)  { transform: translate(-50%, -50%) rotateY(144deg) translateZ(360px);  animation-delay: -8s; }
+.card-3d .book-card:nth-child(6)  { transform: translate(-50%, -50%) rotateY(180deg) translateZ(360px);  animation-delay: -10s; }
+.card-3d .book-card:nth-child(7)  { transform: translate(-50%, -50%) rotateY(216deg) translateZ(360px);  animation-delay: -12s; }
+.card-3d .book-card:nth-child(8)  { transform: translate(-50%, -50%) rotateY(252deg) translateZ(360px);  animation-delay: -14s; }
+.card-3d .book-card:nth-child(9)  { transform: translate(-50%, -50%) rotateY(288deg) translateZ(360px);  animation-delay: -16s; }
+.card-3d .book-card:nth-child(10) { transform: translate(-50%, -50%) rotateY(324deg) translateZ(360px);  animation-delay: -18s; }
 
 .center-header {
     justify-content: center;
