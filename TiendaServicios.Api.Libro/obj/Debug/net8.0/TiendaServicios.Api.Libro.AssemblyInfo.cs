@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TiendaServicios.Api.Libro")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+624e7b14f6dcadcd018cce5a293693e1e9e38f01")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d2d970ae2be0bff308cc51a7c9590b48dca6a5d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TiendaServicios.Api.Libro")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TiendaServicios.Api.Libro")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

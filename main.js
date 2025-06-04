@@ -1,11 +1,14 @@
-//Esta es el api de get para obtener los libros que estan en la base de datos de libro 
+//Esta es el api de get para obtener los libros que estan en la base de datos de libro
+//No mover tania y arce
 const API_URL = 'https://localhost:7119/api/LibroMaterial';
 const API_AUTOR_URL = 'https://localhost:7205/api/Autor';
+const API_AUTOR_GRADO_URL = 'https://localhost:7205/api/Autor/grado';
 
 let libros = [];
 let autores = [];
+let gradosAcademicos = [];
 let currentIndex = 0;
-const visibleCards = 1; // Número de cartas visibles en el carrusel
+const visibleCards = 3; // Número de cartas visibles en el carrusel
 
 // Obtener libros
 function fetchLibros() {
@@ -17,8 +20,8 @@ function fetchLibros() {
         .then(data => {
             libros = data || [];
             currentIndex = 0;
-            renderCarousel(); // Esta función estará en functions.js
-            setupCarouselEvents(); // Esta función estará en functions.js
+            renderCarousel(); // Esta función estará en functions.js asi que no borrar cofa
+            setupCarouselEvents(); // Esta función estará en functions.js y esta tampoco
         })
         .catch(error => {
             document.getElementById('card-carousel') && (document.getElementById('card-carousel').innerHTML = '<p class="text-danger text-center">Error al cargar los libros.</p>');
@@ -42,6 +45,21 @@ function fetchAutores() {
         })
         .catch(error => {
             console.error('Error al cargar autores:', error);
+        });
+}
+
+// Obtener todos los grados académicos y emparejarlos por índice con los autores
+function fetchGradosAcademicos() {
+    return fetch(API_AUTOR_GRADO_URL)
+        .then(response => {
+            if (!response.ok) throw new Error('Error al obtener grados académicos');
+            return response.json();
+        })
+        .then(data => {
+            gradosAcademicos = data || [];
+        })
+        .catch(() => {
+            gradosAcademicos = [];
         });
 }
 
@@ -70,7 +88,7 @@ function fetchAutorDetalle(autorGuid) {
         });
 }
 
-// Mostrar modal con la información del autor
+// Mostrar modal con la información del autor y su grado académico emparejado por índice
 function showAutorModal(autor) {
     let modal = document.getElementById('autor-modal');
     if (!modal) {
@@ -89,20 +107,42 @@ function showAutorModal(autor) {
             if (e.target === modal) hideAutorModal();
         };
     }
-    // Renderiza la información del autor
     const body = document.getElementById('autor-modal-body');
     if (autor.error) {
         body.innerHTML = `<p>No se pudo cargar la información del autor.</p>`;
-    } else {
-        body.innerHTML = `
-            <h3>${autor.nombre ?? autor.Nombre ?? ''} ${autor.apellido ?? autor.Apellido ?? ''}</h3>
-            <p><strong>Fecha de nacimiento:</strong> ${autor.fechaNacimiento ? new Date(autor.fechaNacimiento).toLocaleDateString() : 'No disponible'}</p>
-            <p><strong>GUID:</strong> ${autor.autorLibroGuid ?? autor.AutorLibroGuid ?? ''}</p>
-        `;
+        modal.style.display = 'flex';
+        return;
+    }
 
+    // Encuentra el índice del autor en la lista de autores
+    const idx = window.autores?.findIndex(a =>
+        (a.autorLibroGuid || a.AutorLibroGuid)?.toLowerCase() === String(autor.autorLibroGuid ?? autor.AutorLibroGuid).toLowerCase()
+    );
+    // Empareja el grado académico por índice
+    const grado = (idx !== undefined && idx >= 0 && idx < gradosAcademicos.length) ? gradosAcademicos[idx] : null;
 
+    body.innerHTML = `
+        <h3>${autor.nombre ?? autor.Nombre ?? ''} ${autor.apellido ?? autor.Apellido ?? ''}</h3>
+        <p><strong>Fecha de nacimiento:</strong> ${autor.fechaNacimiento ? new Date(autor.fechaNacimiento).toLocaleDateString() : 'No disponible'}</p>
+        <p><strong>GUID:</strong> ${autor.autorLibroGuid ?? autor.AutorLibroGuid ?? ''}</p>
+        <div id="autor-grados">
+            ${
+                grado
+                ? `<h4>Grado Académico</h4>
+                    <ul>
+                        <li>
+                            <strong>${grado.nombre ?? grado.Nombre ?? ''}</strong> - 
+                            ${grado.centroAcademico ?? grado.CentroAcademico ?? ''} 
+                            (${grado.fechaGrado ? new Date(grado.fechaGrado).toLocaleDateString() : 'Sin fecha'})
+                        </li>
+                    </ul>`
+                : '<p>No hay grados académicos registrados.</p>'
+            }
+        </div>
+    `;
+    modal.style.display = 'flex';
+}
 
-}    modal.style.display = 'flex';    }
 // Ocultar modal
 function hideAutorModal() {
     const modal = document.getElementById('autor-modal');
@@ -110,7 +150,6 @@ function hideAutorModal() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetchLibros();
-    fetchAutores();
+    Promise.all([fetchLibros(), fetchAutores(), fetchGradosAcademicos()]);
 });
 
