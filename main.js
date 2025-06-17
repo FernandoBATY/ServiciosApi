@@ -3,12 +3,15 @@
 const API_URL = 'https://localhost:7119/api/LibroMaterial';
 const API_AUTOR_URL = 'https://localhost:7205/api/Autor';
 const API_AUTOR_GRADO_URL = 'https://localhost:7205/api/Autor/grado';
+const API_CARRITO = 'https://localhost:7279/api/CarritoCompras';
+
+
 
 let libros = [];
 let autores = [];
 let gradosAcademicos = [];
 let currentIndex = 0;
-const visibleCards = 3; // Número de cartas visibles en el carrusel
+const visibleCards = 3; // Número de cartas visibles en el carrusel que sea 1 o 3 no mas ni menos pa
 
 // Obtener libros
 function fetchLibros() {
@@ -18,7 +21,10 @@ function fetchLibros() {
             return response.json();
         })
         .then(data => {
-            libros = data || [];
+            libros = (data || []).map(libro => ({
+                ...libro,
+                precio: 1200 // Asigna un precio fijo de 1200 pesos a cada libro
+            }));
             currentIndex = 0;
             renderCarousel(); // Esta función estará en functions.js asi que no borrar cofa
             setupCarouselEvents(); // Esta función estará en functions.js y esta tampoco
@@ -88,7 +94,7 @@ function fetchAutorDetalle(autorGuid) {
         });
 }
 
-// Mostrar modal con la información del autor y su grado académico emparejado por índice
+
 function showAutorModal(autor) {
     let modal = document.getElementById('autor-modal');
     if (!modal) {
@@ -103,7 +109,7 @@ function showAutorModal(autor) {
         `;
         document.body.appendChild(modal);
         document.getElementById('autor-modal-close').onclick = hideAutorModal;
-        modal.onclick = function(e) {
+        modal.onclick = function (e) {
             if (e.target === modal) hideAutorModal();
         };
     }
@@ -114,29 +120,27 @@ function showAutorModal(autor) {
         return;
     }
 
-    // Encuentra el índice del autor en la lista de autores
     const idx = window.autores?.findIndex(a =>
         (a.autorLibroGuid || a.AutorLibroGuid)?.toLowerCase() === String(autor.autorLibroGuid ?? autor.AutorLibroGuid).toLowerCase()
     );
-    // Empareja el grado académico por índice
+
     const grado = (idx !== undefined && idx >= 0 && idx < gradosAcademicos.length) ? gradosAcademicos[idx] : null;
 
     body.innerHTML = `
         <h3>${autor.nombre ?? autor.Nombre ?? ''} ${autor.apellido ?? autor.Apellido ?? ''}</h3>
         <p><strong>Fecha de nacimiento:</strong> ${autor.fechaNacimiento ? new Date(autor.fechaNacimiento).toLocaleDateString() : 'No disponible'}</p>
-        <p><strong>GUID:</strong> ${autor.autorLibroGuid ?? autor.AutorLibroGuid ?? ''}</p>
         <div id="autor-grados">
             ${
                 grado
-                ? `<h4>Grado Académico</h4>
-                    <ul>
-                        <li>
-                            <strong>${grado.nombre ?? grado.Nombre ?? ''}</strong> - 
-                            ${grado.centroAcademico ?? grado.CentroAcademico ?? ''} 
-                            (${grado.fechaGrado ? new Date(grado.fechaGrado).toLocaleDateString() : 'Sin fecha'})
-                        </li>
-                    </ul>`
-                : '<p>No hay grados académicos registrados.</p>'
+                    ? `<h4>Grado Académico</h4>
+                        <ul>
+                            <li>
+                                <strong>${grado.nombre ?? grado.Nombre ?? ''}</strong> - 
+                                ${grado.centroAcademico ?? grado.CentroAcademico ?? ''} 
+                                (${grado.fechaGrado ? new Date(grado.fechaGrado).toLocaleDateString() : 'Sin fecha'})
+                            </li>
+                        </ul>`
+                    : '<p>No hay grados académicos registrados.</p>'
             }
         </div>
     `;

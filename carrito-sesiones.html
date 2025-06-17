@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sesiones de Carrito</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header center-header">
+        <h2 class="text-center mb-4 center-title">Sesiones de Carrito</h2>
+        <button id="back-button" onclick="window.location.href='index.html'"><i class="fas fa-arrow-left"></i> Regresar</button>
+    </header>
+    <main>
+        <section class="cart-session">
+            <div class="search-container">
+                <label for="carrito-id">ID del Carrito:</label>
+                <input type="text" id="carrito-id" placeholder="Ingresa el ID del carrito">
+                <button id="buscar-carrito-btn">Buscar</button>
+            </div>
+            <div id="carrito-detalle" class="carrito-detalle">
+                <h3>Detalle del Carrito</h3>
+                <div id="carrito-libros" class="carrito-libros">
+                    <p class="text-center">No hay libros en este carrito.</p>
+                </div>
+                <div class="cart-summary">
+                    <p class="total">Total: $<span id="total-price">0</span></p>
+                    <button id="checkout-button">Pagar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="carrito-sesiones.js"></script>
+</body>
+</html>

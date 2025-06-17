@@ -1,3 +1,72 @@
+let carritoTemporal = [];
+
+// Renderiza la lista de libros seleccionados en el carrito
+function renderCarrito() {
+    const carritoContainer = document.getElementById('carrito-lista');
+    carritoContainer.innerHTML = '';
+
+    if (!carritoTemporal.length) {
+        carritoContainer.innerHTML = '<p class="text-center">No hay libros en el carrito.</p>';
+        return;
+    }
+
+    carritoTemporal.forEach((libro, idx) => {
+        const item = document.createElement('div');
+        item.className = 'carrito-item';
+        item.innerHTML = `
+            <span>${libro.titulo ?? 'Sin título'}</span>
+            <button class="remove-btn" data-index="${idx}">❌</button>
+        `;
+        carritoContainer.appendChild(item);
+    });
+
+    // Agrega eventos para eliminar libros del carrito
+    const removeBtns = carritoContainer.querySelectorAll('.remove-btn');
+    removeBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const index = parseInt(this.getAttribute('data-index'), 10);
+            carritoTemporal.splice(index, 1);
+            renderCarrito();
+        });
+    });
+}
+
+// Evento para agregar libros al carrito temporal
+function agregarAlCarrito(libro) {
+    carritoTemporal.push(libro);
+    renderCarrito();
+}
+
+// Evento para realizar el POST de todos los libros seleccionados
+function enviarCarrito() {
+    if (!carritoTemporal.length) {
+        alert('El carrito está vacío.');
+        return;
+    }
+
+    fetch(API_CARRITO, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            fechaCreacionSesion: new Date().toISOString(),
+            productoLista: carritoTemporal.map(libro => libro.libreriaMaterialId)
+        })
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('No se pudo completar la compra');
+        return response.json();
+    })
+    .then(() => {
+        alert('Compra realizada con éxito');
+        carritoTemporal = [];
+        renderCarrito();
+    })
+    .catch(() => {
+        alert('Error al realizar la compra');
+    });
+}
+
+// Modifica el renderizado del carrusel para usar la nueva funcionalidad
 function renderCarousel() {
     const carousel = document.getElementById('card-3d');
     carousel.innerHTML = '';
@@ -40,11 +109,15 @@ function renderCarousel() {
                 </p>
             </div>
             <div class="book-card__footer">
-                <span class="book-card__price">$${libro.precio ?? '--'}</span>
+                <span class="book-card__price">$${libro.precio ?? 1200}</span>
                 <button class="book-card__btn" title="Agregar al carrito">🛒</button>
             </div>
         `;
         carousel.appendChild(card);
+
+        // Evento para agregar al carrito temporal
+        const btn = card.querySelector('.book-card__btn');
+        btn.addEventListener('click', () => agregarAlCarrito(libro));
     }
 
     // Eventos para pausar animación
@@ -64,7 +137,7 @@ function renderCarousel() {
     // Evento para mostrar modal al hacer click en el autor
     const autorLinks = carousel.querySelectorAll('.autor-link');
     autorLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
+        link.addEventListener('click', function () {
             const guid = this.getAttribute('data-autorguid');
             if (guid) {
                 fetchAutorDetalle(guid);
@@ -73,7 +146,8 @@ function renderCarousel() {
     });
 }
 
-// Las funciones de navegación ya no son necesarias en el modo 3D
+
 function showPrev() {}
 function showNext() {}
+function setupCarouselEvents() {}
 function setupCarouselEvents() {}

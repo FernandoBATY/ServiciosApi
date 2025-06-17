@@ -119,3 +119,4 @@ C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.Carrito
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\TiendaServicio.Api.CarritoCompra.pdb
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\TiendaServicio.Api.CarritoCompra.genruntimeconfig.cache
 C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\ref\TiendaServicio.Api.CarritoCompra.dll
+C:\Users\bryan\source\repos\TiendaServicios.Api.Autor\TiendaServicio.Api.CarritoCompra\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

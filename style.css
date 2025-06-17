@@ -625,3 +625,116 @@ footer {
 .autor-modal-close:hover {
     color: #ff5722;
 }
+
+/* Estilos para el carrito en la parte inferior */
+.carrito-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-lista {
+    margin: 1rem 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.carrito-item span {
+    font-size: 1rem;
+    color: #333;
+}
+
+.remove-btn {
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background: #e60000;
+}
+
+.enviar-carrito-btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.enviar-carrito-btn:hover {
+    background: #45a049;
+}
+
+/* Estilos para la página de sesiones de carrito */
+.cart-session {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.search-container button {
+    padding: 0.8rem 1.2rem;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background: #45a049;
+}
+
+.carrito-detalle {
+    margin-top: 1.5rem;
+}
+
+.carrito-libros {
+    margin-top: 1rem;
+}
+
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+}

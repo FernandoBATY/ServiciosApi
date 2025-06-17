@@ -9,7 +9,7 @@
 <body>
     <header class="main-header center-header">
         <h2 class="text-center mb-4 center-title">Libros Disponibles</h2>
-        <a href="carrito.html" class="cart-header-btn" title="Ver carrito">
+        <a href="carrito-sesiones.html" class="cart-header-btn" title="Ver carrito">
             🛒
         </a>
     </header>
@@ -21,7 +21,17 @@
             </div>
         </div>
     </div>
+    <div class="carrito-container">
+        <h3>Carrito de Compras</h3>
+        <div id="carrito-lista" class="carrito-lista">
+            <p class="text-center">No hay libros en el carrito.</p>
+        </div>
+        <button id="enviar-carrito-btn" class="enviar-carrito-btn">Realizar Compra</button>
+    </div>
     <script src="main.js"></script>
     <script src="functions.js"></script>
+    <script>
+        document.getElementById('enviar-carrito-btn').addEventListener('click', enviarCarrito);
+    </script>
 </body>
 </html>

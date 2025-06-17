@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using TiendaServicios.Api.CarritoCompra.Persistencia;
 using MediatR;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuración de MySQL para EF Core
+// Configuraciï¿½n de MySQL para EF Core
 builder.Services.AddDbContext<CarritoContexto>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("MySqlConnection"),
@@ -15,12 +18,24 @@ builder.Services.AddDbContext<CarritoContexto>(options =>
 // Registro de MediatR
 builder.Services.AddMediatR(typeof(TiendaServicios.Api.CarritoCompra.Aplicacion.Nuevo).Assembly);
 
-// Servicios básicos de la API
+// Servicios bï¿½sicos de la API
 builder.Services.AddControllers();
 
 // Agrega Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Agrega CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -32,5 +47,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Habilita CORS antes de Authorization y Endpoints
+app.UseCors("AllowAll");
+
+app.UseAuthorization();
+
 app.MapControllers();
+
 app.Run();
